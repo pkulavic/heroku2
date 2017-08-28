@@ -13,9 +13,12 @@ def find(request):
             city = form.cleaned_data['city']
             queryset = TutorProfile.objects.filter(subject=subject, city=city)
             count = queryset.count()
-
-            for obj in queryset:
-                availability_set = obj.availability.all()
+            
+            if count == 0:
+                availability_set = []
+            else: 
+                for obj in queryset:
+                    availability_set = obj.availability.all()
 
             context = {'form': FindForm(request.POST), 'queryset': queryset, 'count': count, 'availability_set': availability_set}
     else:
