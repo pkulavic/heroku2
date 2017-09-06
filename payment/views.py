@@ -3,6 +3,7 @@ from find.views import find_detail_view
 from .models import StripeCustomer, MyTutorCustomer
 from tutorprofile.models import TutorProfile
 from django.core.mail import send_mail
+from pract_2.settings import EMAIL_HOST_USER
 import stripe
 
 def checkout(request):
@@ -54,7 +55,7 @@ def checkout(request):
             'NEW CUSTOMER',
             "Parent name: %s. Student name: %s. Email: %s. // Tutor name: %s. Tutor Email: %s" % (parent_name, student_name, email, tutor, tutoremail),
             email,
-            ['mytutorforward@gmail.com'],
+            [EMAIL_HOST_USER],
             fail_silently=True,
         )
 
