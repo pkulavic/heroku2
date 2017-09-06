@@ -15,3 +15,4 @@ class PaymentForm(forms.Form):
     parent_name = forms.CharField(max_length=120)
     student_name = forms.CharField(max_length=120)
     tutor = forms.CharField(max_length=120)
+    time = forms.CharField(max_length=120)

@@ -13,10 +13,10 @@ def find(request):
             city = form.cleaned_data['city']
             queryset = TutorProfile.objects.filter(subject=subject, city=city)
             count = queryset.count()
-            
+
             if count == 0:
                 availability_set = []
-            else: 
+            else:
                 for obj in queryset:
                     availability_set = obj.availability.all()
 
@@ -27,14 +27,10 @@ def find(request):
     return render(request, template, context)
 
 
-
-
-
 def find_detail_view(request, slug):
     tutor = TutorProfile.objects.get(slug=slug)
     availability_set = tutor.availability.all()
 
-    BoundPaymentForm = PaymentForm({'tutor': tutor, 'parent_name': '', 'student_name': ''})
 
     TIME_CHOICES = []
     for time in availability_set:
@@ -48,6 +44,7 @@ def find_detail_view(request, slug):
         form = TimeForm(request.POST)
         if form.is_valid():
             time = form.cleaned_data['times']
+            BoundPaymentForm = PaymentForm({'tutor': tutor, 'parent_name': '', 'student_name': '', 'time': time})
             template = 'payment/checkout.html'
             context = {'time': time, 'tutor': tutor, 'BoundPaymentForm': BoundPaymentForm}
 
