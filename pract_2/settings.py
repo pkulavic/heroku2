@@ -25,7 +25,7 @@ SECRET_KEY = '55_vt@f*x9v1=i3!z&g=pbzh9qshm-#of-x2mo+9e3u#labh_('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mytutormarin.herokuapp.com']
+ALLOWED_HOSTS = ['mytutormarin.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
